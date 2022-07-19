@@ -32,3 +32,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorities("ROLE_ADMIN");
     }
 }
+
+
