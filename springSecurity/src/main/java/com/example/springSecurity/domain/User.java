@@ -1,13 +1,15 @@
 package com.example.springSecurity.domain;
 
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
