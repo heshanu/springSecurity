@@ -2,6 +2,7 @@ package com.example.springSecurity.services;
 
 import com.example.springSecurity.domain.User;
 import com.example.springSecurity.repository.UserRepository;
+import com.example.springSecurity.security.CustomSecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
+
+    @Autowired(required = false)
     private UserRepository userRepository;
 
     @Override
@@ -20,6 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if(user==null){
             throw  new UsernameNotFoundException("username or password was incorrect");
         }
-        return user;
+
+        return new CustomSecurityUser(user);
     }
 }

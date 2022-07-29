@@ -1,14 +1,25 @@
 package com.example.springSecurity.security;
 
+import com.example.springSecurity.domain.Authorities;
 import com.example.springSecurity.domain.User;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.Set;
 
 public class CustomSecurityUser extends User implements UserDetails {
+
+    public CustomSecurityUser() {
+    }
+
+    public CustomSecurityUser(User user) {
+        this.setAuthorities(user.getAuthorities());
+        this.setId(user.getId());
+        this.setPassword(user.getPassword());
+        this.setUsername(user.getUsername());
+    }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Set<Authorities> getAuthorities() {
         return null;
     }
 

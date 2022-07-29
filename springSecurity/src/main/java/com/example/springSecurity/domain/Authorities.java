@@ -1,20 +1,15 @@
 package com.example.springSecurity.domain;
-
 import org.springframework.security.core.GrantedAuthority;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.beans.Customizer;
 
 @Entity
 public class Authorities implements GrantedAuthority {
-    private static final long serialVersionUID=10000L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String authority;
-
 
     public User getUser() {
         return user;
@@ -23,7 +18,6 @@ public class Authorities implements GrantedAuthority {
     public void setUser(User user) {
         this.user = user;
     }
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
