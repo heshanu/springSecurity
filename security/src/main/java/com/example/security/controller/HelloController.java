@@ -9,7 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableWebSecurity
 public class HelloController {
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
         return "hello";
     }
+
+    @GetMapping("/bye")
+    public String bye() {
+        return "bye";
+    }
+
 }
